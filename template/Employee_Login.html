@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login</title>
+    <style>
+    :root {
+    --background: #1b1b2f;
+    --color: #ffffff;
+    --primary-color: #162447;
+    --secondary-color: #1f4068;
+    --gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--background);
+    color: var(--color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    position: relative;
+    width: 360px;
+    background: var(--gradient);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.form-container input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--color);
+    font-size: 1rem;
+}
+
+.form-container input::placeholder {
+    color: rgba(255, 255, 255, 0.8); /* Increased opacity for better visibility */
+    opacity: 1; /* Ensure the placeholder color is applied correctly */
+}
+
+.form-container input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.form-container button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 5px;
+    background: var(--secondary-color);
+    color: var(--color);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-container button:hover {
+    background: var(--primary-color);
+}
+
+.form-container .register-forget {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.form-container .register-forget a {
+    color: var(--color);
+    background: var(--secondary-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s ease, color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-container .register-forget a:hover {
+    background: var(--primary-color);
+    color: var(--background);
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.circle.circle-one {
+    top: -60px;
+    left: -60px;
+    width: 120px;
+    height: 120px;
+}
+
+.circle.circle-two {
+    bottom: -60px;
+    right: -60px;
+    width: 80px;
+    height: 80px;
+}
+
+.theme-btn-container {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+
+.theme-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.theme-btn:hover {
+    transform: scale(1.1);
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-container">
+            <div class="circle circle-one"></div>
+            <div class="circle circle-two"></div>
+            <div class="form-container">
+                <h2>EMPLOYEE LOGIN</h2>
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    {% load static %}
+                    <input type="text" placeholder="Enter Your Employee ID" name="EmployeeID" required>
+                    <input type="password" placeholder="Enter Your Password" name="password" required>
+                    {% for msg in messages %}
+                        <p style="color: red">{{msg}}</p>
+                    {% endfor %}
+                    <button type="submit">SUBMIT</button>
+                </form>
+                <div class="register-forget">
+                    <a href="http://127.0.0.1:8000/Admin%20Login/">ADMIN LOGIN</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const themes = [
+            {
+                background: "#1b1b2f",
+                color: "#ffffff",
+                primaryColor: "#162447",
+                secondaryColor: "#1f4068",
+                gradient: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)"
+            },
+            {
+                background: "#1a1a2e",
+                color: "#ffffff",
+                primaryColor: "#0f3460",
+                secondaryColor: "#53354a",
+                gradient: "linear-gradient(135deg, #0f3460, #53354a, #1a1a2e)"
+            },
+            {
+                background: "#282c34",
+                color: "#ffffff",
+                primaryColor: "#61dafb",
+                secondaryColor: "#21a1f1",
+                gradient: "linear-gradient(135deg, #282c34, #21a1f1, #61dafb)"
+            },
+            {
+                background: "#ff5f6d",
+                color: "#ffffff",
+                primaryColor: "#ffc371",
+                secondaryColor: "#ff5f6d",
+                gradient: "linear-gradient(135deg, #ffc371, #ff5f6d)"
+            },
+            {
+                background: "#ffafbd",
+                color: "#ffffff",
+                primaryColor: "#ffc3a0",
+                secondaryColor: "#ffafbd",
+                gradient: "linear-gradient(135deg, #ffc3a0, #ffafbd)"
+            }
+        ];
+
+        const setTheme = (theme) => {
+            const root = document.querySelector(":root");
+            root.style.setProperty("--background", theme.background);
+            root.style.setProperty("--color", theme.color);
+            root.style.setProperty("--primary-color", theme.primaryColor);
+            root.style.setProperty("--secondary-color", theme.secondaryColor);
+            root.style.setProperty("--gradient", theme.gradient);
+        };
+
+        const displayThemeButtons = () => {
+            const btnContainer = document.querySelector(".theme-btn-container");
+            let output = "";
+
+            themes.forEach((theme, index) => {
+                output += `<div class="theme-btn" style="background: ${theme.primaryColor};" onclick="setTheme(themes[${index}])"></div>`;
+            });
+
+            btnContainer.innerHTML = output;
+        };
+
+        window.onload = displayThemeButtons;
+    </script>
+</body>
+</html>
